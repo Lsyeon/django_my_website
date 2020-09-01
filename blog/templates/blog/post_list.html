@@ -89,7 +89,7 @@
                     {#<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">#}
                     <div class="card-body">
                         <h2 class="card-title">{{ p.title }}</h2>
-                        <p class="card-text">{{ p.content }}</p>
+                        <p class="card-text">{{ p.content | truncatewords:30}}</p> {# 보여주는 글자 수 제한 #}
                         <a href="#" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
