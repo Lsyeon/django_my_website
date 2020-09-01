@@ -8,3 +8,6 @@ class Post(models.Model):
 
     created = models.DateTimeField() #작성일
     author = models.ForeignKey(User, on_delete=models.CASCADE) #어떤 사용자가 삭제되면 글도 삭제
+
+    def __str__(self):
+        return '{} :: {}'.format(self.title, self.author)
