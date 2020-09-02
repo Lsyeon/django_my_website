@@ -17,5 +17,6 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
+    path('<int:pk>/', views.PostDetail.as_view()), #int type으로 들어올때 pk를 의미
     path('', views.PostList.as_view()),
 ]
