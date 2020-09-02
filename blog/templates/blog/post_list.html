@@ -7,9 +7,15 @@
             <div class="card mb-4">
                 {% if p.head_image %}
                     <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap">
+                {% else %}
                 {% endif %}
-                {#<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">#}
+
                 <div class="card-body">
+                    {% if p.category %}
+                    <span class="badge badge-primary float-right">{{ p.category }}</span>
+                    {% else %}
+                    <span class="badge badge-primary float-right">미분류</span>
+                    {% endif %}
                     <h2 class="card-title">{{ p.title }}</h2>
                     <p class="card-text">{{ p.content | truncatewords:30}}</p> {# 보여주는 글자 수 제한 #}
                     <a href="{{ p.get_absolute_url }}" class="btn btn-primary" id="read-more-post-{{ p.pk }}">Read More &rarr;</a>
