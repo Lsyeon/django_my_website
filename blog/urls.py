@@ -19,6 +19,8 @@ from . import views
 urlpatterns = [
     path('tag/<str:slug>/', views.PostListByTag.as_view()),
     path('category/<str:slug>/', views.PostListByCategory.as_view()),
+    path('<int:pk>/update', views.PostUpdate.as_view()), #int type으로 들어올때 pk를 의미
     path('<int:pk>/', views.PostDetail.as_view()), #int type으로 들어올때 pk를 의미
+    path('create/', views.PostCreate.as_view()), #int type으로 들어올때 pk를 의미
     path('', views.PostList.as_view()),
 ]

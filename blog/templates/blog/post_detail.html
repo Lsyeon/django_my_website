@@ -16,7 +16,7 @@
         <a href="#">{{ object.author.username }}</a>
     </p>
     {% if request.user == object.author %}
-        <button type="button" class="btn btn-outline-secondary btn-sm float-right">EDIT</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm float-right" onclick="location.href='{{ object.get_update_url }}'">EDIT</button>
     {% endif %}
 
     <hr>
@@ -28,7 +28,7 @@
 
     <!-- Preview Image -->
     {% if object.head_image %}
-        <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+        <img class="img-fluid rounded" src="{{ object.head_image.url }}" alt="{{ object.title }}">
         <hr>
     {% endif %}
 

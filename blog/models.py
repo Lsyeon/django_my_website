@@ -34,11 +34,11 @@ class Post(models.Model):
 
     head_image = models.ImageField(upload_to='blog/%Y/%m/%d/', blank=True) # 이미지 시간별로 구분, 필수로 안채워져도 됨
 
-    created = models.DateTimeField() #작성일
+    created = models.DateTimeField(auto_now_add=True) #작성일
     author = models.ForeignKey(User, on_delete=models.CASCADE) #어떤 사용자가 삭제되면 글도 삭제
 
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.SET_NULL)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return '{} :: {}'.format(self.title, self.author)
@@ -46,3 +46,5 @@ class Post(models.Model):
     def get_absolute_url(self):
         return '/blog/{}/'.format(self.pk) #admin에서 사이트이동
 
+    def get_update_url(self):
+        return self.get_absolute_url() + 'update'
