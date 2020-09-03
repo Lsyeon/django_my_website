@@ -6,7 +6,7 @@
     {% if object_list.exists %}
         <!-- Blog Post -->
         {% for p in object_list %}
-            <div class="card mb-4">
+            <div class="card mb-4" id="post-card-{{ p.pk }}">
                 {% if p.head_image %}
                     <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap">
                 {% else %}
@@ -20,6 +20,13 @@
                     {% endif %}
                     <h2 class="card-title">{{ p.title }}</h2>
                     <p class="card-text">{{ p.content | truncatewords:30}}</p> {# 보여주는 글자 수 제한 #}
+
+                    {% for tag in p.tags.all %}
+                        <a href="{{ tag.get_absolute_url }}">#{{ tag }}</a>
+                    {% endfor %}
+                    <br/>
+                    <br/>
+
                     <a href="{{ p.get_absolute_url }}" class="btn btn-primary" id="read-more-post-{{ p.pk }}">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
